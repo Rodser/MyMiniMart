@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using _Ollie.Scripts;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,19 +10,22 @@ public class Game : MonoBehaviour
     [SerializeField] private Player _playerPrefab;
     [SerializeField] private Zone _zonePrefab;
     [Space(20)] 
+    [SerializeField] private Joystick _joystick;
     [SerializeField] private CameraTarget _cameraTarget;
-    [SerializeField] private TextMeshProUGUI _coinsTMP;
-    [SerializeField] private GameObject _coinImg;
-    [SerializeField] private float _txtScaleTime;
-    [SerializeField] private Vector3 _txtScaleMax;
-    private Controls _controls;
+    [SerializeField] private Joystick _screenStick;
+    //[SerializeField] private TextMeshProUGUI _coinsTMP;
+    //[SerializeField] private GameObject _coinImg;
+    //[SerializeField] private float _txtScaleTime;
+    //[SerializeField] private Vector3 _txtScaleMax;
+    
+    private InputPlayerSystem _inputPlayer;
     private Player _player;
-    private object _coins = 0;
+    private int _coins = 0;
     private Zone _zone;
 
     void Awake()
     {
-        _controls = new Controls();
+        _inputPlayer = new InputPlayerSystem();
         // _coinsTMP.text = _coins.ToString();
     }
 
@@ -35,6 +34,8 @@ public class Game : MonoBehaviour
         _zone = Instantiate(_zonePrefab);
         _zone.StartSpawn(_cashDeskPrefab, _shelfPrefab, _bedPrefab);
         _player = Instantiate(_playerPrefab, _zone.PointPlayer.position, Quaternion.identity);
-        _cameraTarget.SetTaget(_player.transform);
+        _player.Construct(_inputPlayer, _joystick);
+        _cameraTarget.Construct(_player.transform);
     }
+    
 }

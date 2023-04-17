@@ -1,34 +1,23 @@
 {
-    "name": "Controls",
+    "name": "InputPlayerSystem",
     "maps": [
         {
-            "name": "New action map",
+            "name": "MoverActionMap",
             "id": "0435280a-4814-4090-a735-60260823d8da",
             "actions": [
                 {
                     "name": "Move",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "4e3fbf47-4ee6-45dc-bf3a-51900f3e17f8",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2,InvertVector2",
                     "interactions": "Tap",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "e61dbd9f-fd1f-4e90-ad3e-6c20a2e20eb7",
-                    "path": "<Touchscreen>/primaryTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "TouchAndroid",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
+                    "name": "2D Vector Touch",
                     "id": "6c2c8c62-1538-4730-94ae-9a87e136f224",
                     "path": "2DVector",
                     "interactions": "",
@@ -39,7 +28,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Up",
                     "id": "551fae39-37f9-45c9-b856-0f3fba45a198",
                     "path": "<Touchscreen>/primaryTouch/delta/up",
                     "interactions": "",
@@ -50,7 +39,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "Down",
                     "id": "cd73e190-386c-499b-ae34-f34ed03257b1",
                     "path": "<Touchscreen>/primaryTouch/delta/down",
                     "interactions": "",
@@ -61,23 +50,23 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "e73426e1-f3c3-495d-9b34-ef525d7fb0bc",
+                    "name": "Left",
+                    "id": "296c469f-8923-479f-b8ee-220bc3f19c09",
                     "path": "<Touchscreen>/primaryTouch/delta/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "TouchAndroid",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "8aa1e6a8-25cb-437e-bb82-d2145bc1b64e",
+                    "name": "Right",
+                    "id": "68ec8952-186e-48a8-b59f-4e810a435464",
                     "path": "<Touchscreen>/primaryTouch/delta/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "TouchAndroid",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true

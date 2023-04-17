@@ -4,7 +4,7 @@ public class CameraTarget : MonoBehaviour
 {
     private Transform _target;
 
-    public void SetTaget(Transform target)
+    public void Construct(Transform target)
     {
         _target = target;
     }

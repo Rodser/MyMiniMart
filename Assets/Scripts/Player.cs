@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using _Ollie.Scripts;
-using Cinemachine;
 using UnityEngine;
 
 enum PlayerState
@@ -25,24 +22,36 @@ public class Player : MonoBehaviour
     private Vector3 _movePosition;
     private Rigidbody _ridigbody;
     private Animator _animator;
-    private Transform _model;
-    private const float _delta = 0.001f;
     private PlayerState _state;
     private bool _sellBlocks;
     private int _coinsToSpawn = 0;
-        
-        
-    [SerializeField] private float _backlash = 0.01f;
 
     private Mover _mover;
+    private Joystick _joystick;
     private static readonly int MoveValue = Animator.StringToHash("Move");
     private static readonly int IsCarry = Animator.StringToHash("Carry");
+    private float _timeLastMove;
+    private Vector2 _startTouchPosition;
+
+    private InputPlayerSystem _inputPlayer;
+
+    public Rigidbody Ridigbody => _ridigbody;
+
+    public float MoveSpeed => _moveSpeed;
+
+    public float TurnSpeed => _turnSpeed;
+    public Joystick Joystick => _joystick;
+
+    public void Construct(InputPlayerSystem inputPlayer, Joystick joystick)
+    {
+        _inputPlayer = inputPlayer;
+        _joystick = joystick;
+    }
 
     private void Awake()
     {
         _ridigbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
-        _model = _animator.gameObject.transform;
         _state = PlayerState.Idle;
         _stackedBlocks = new Stack<Transform>();
         _sellBlocks = false;
@@ -51,33 +60,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _mover = GetComponent<Mover>();
+        _mover.Construct(_inputPlayer.MoverActionMap.Move, this);
     }
 
-    private void FixedUpdate()
+    public  void MoveAnim(float strength)
     {
-        if (_isMoving)
-        {
-            _ridigbody.velocity = _movePosition * _moveSpeed;
-            _model.rotation = Quaternion.Slerp(_model.rotation, Quaternion.LookRotation(_movePosition), _turnSpeed * Time.fixedDeltaTime);
-            _isMoving = false;
-        }
-    }
-
-        
-    public void Move(Vector3 newPosition)
-    { 
-        _movePosition = new Vector3(newPosition.x, 0, newPosition.y);
-        if (!Mathf.Approximately(_movePosition.sqrMagnitude, 0))
-        {
-            MoveAnim(_movePosition.sqrMagnitude);
-            _isMoving = true;
-        }
-        Debug.Log("Move pos: " + _movePosition);     
-    }
-        
-    private void MoveAnim(float strength)
-    {
-        _state = PlayerState.Moving;
         _animator.SetFloat(MoveValue, strength);
     }
 
@@ -85,10 +72,4 @@ public class Player : MonoBehaviour
     {
         _animator.SetBool(IsCarry, value);
     }
-
-    private void StopAnim()
-    {
-        _state = PlayerState.Idle;
-    }
-        
 }
