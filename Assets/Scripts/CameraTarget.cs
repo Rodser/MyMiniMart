@@ -9,7 +9,7 @@ public class CameraTarget : MonoBehaviour
         _target = target;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(_target is null)
             return;
