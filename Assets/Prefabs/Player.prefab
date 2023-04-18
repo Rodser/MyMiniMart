@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8174213453224693578}
+  - component: {fileID: 3519578168939141199}
   m_Layer: 0
-  m_Name: PointPack
+  m_Name: ItemsPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 2833365954033824390}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3519578168939141199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790024215346618336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0200cfb06428411c995484e857b87540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxItems: 5
+  _itemShift: 0.2
 --- !u!1 &3359360055869498467
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3359360055869498467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.064, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -112,8 +127,7 @@ MonoBehaviour:
   _turnSpeed: 555
   _sellTime: 1
   _coinTime: 1
-  _stackPoint: {fileID: 8174213453224693578}
-  _animatorOverride: {fileID: 0}
+  _itemsPack: {fileID: 3519578168939141199}
 --- !u!136 &4394845165427962036
 CapsuleCollider:
   m_ObjectHideFlags: 0

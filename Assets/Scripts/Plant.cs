@@ -35,7 +35,7 @@ public class Plant : MonoBehaviour
                 
             await Task.Delay(_growthTime);
             var vegetable = Instantiate(_vegetable, _landings[index]);
-            vegetable.Construct(index);
+            vegetable.CurrentIndex = index;
             _vegetables[index] = vegetable;
         }
 

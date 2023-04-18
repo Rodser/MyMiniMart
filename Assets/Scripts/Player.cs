@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using DefaultNamespace;
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum PlayerState
@@ -14,9 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _sellTime;
     [SerializeField] private float _coinTime;
-    [SerializeField] private Transform _stackPoint;
+    [SerializeField] private ItemsPack _itemsPack;
     
-    private Stack<Transform> _stackedBlocks;
     private bool _isMoving = false;
     private Vector3 _movePosition;
     private Rigidbody _ridigbody;
@@ -55,7 +56,6 @@ public class Player : MonoBehaviour
         _ridigbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _state = PlayerState.Idle;
-        _stackedBlocks = new Stack<Transform>();
         _sellBlocks = false;
     }
 
@@ -71,14 +71,29 @@ public class Player : MonoBehaviour
         {
             TakeVegetable(other);
         }
+        else if(other.CompareTag("Shelf"))
+        {
+            GiveVegetable(other);
+        }
+    }
+
+    private void GiveVegetable(Collider other)
+    {
+        var shelf = other.GetComponent<Shelf>();
+        shelf.TakeVegetable(_itemsPack);
+        if(_itemsPack.Count == 0)
+            SetCarryAnim(false);
     }
 
     private void TakeVegetable(Collider other)
     {
+        if(_itemsPack.IsFull)
+            return;
         var item = other.GetComponent<Plant>().GetVegetable();
         if (item == null)
             return;
-        item.FlyTo(_stackPoint);
+        item.FlyTo(_itemsPack);
+        _itemsPack.Add(item);
         SetCarryAnim(true);
     }
 
