@@ -45,7 +45,6 @@ public class Mover : MonoBehaviour
     private void Move(Vector3 move)
     {
         var strength = Mathf.Clamp01(move.sqrMagnitude);
-        Debug.Log(strength);
         _parent.MoveAnim(strength);
         
         move *= _moveSpeed * Time.fixedDeltaTime;

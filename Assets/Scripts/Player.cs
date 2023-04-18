@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _sellTime;
     [SerializeField] private float _coinTime;
     [SerializeField] private Transform _stackPoint;
+    [SerializeField] private AnimatorOverrideController _animatorOverride;
+    
     private Stack<Transform> _stackedBlocks;
     private bool _isMoving = false;
     private Vector3 _movePosition;
@@ -34,11 +36,9 @@ public class Player : MonoBehaviour
     private Vector2 _startTouchPosition;
 
     private InputPlayerSystem _inputPlayer;
-
+    
     public Rigidbody Ridigbody => _ridigbody;
-
     public float MoveSpeed => _moveSpeed;
-
     public float TurnSpeed => _turnSpeed;
     public Joystick Joystick => _joystick;
 
@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
     {
         _inputPlayer = inputPlayer;
         _joystick = joystick;
+    }
+
+    public  void MoveAnim(float strength)
+    {
+        _animator.SetFloat(MoveValue, strength);
     }
 
     private void Awake()
@@ -63,9 +68,21 @@ public class Player : MonoBehaviour
         _mover.Construct(_inputPlayer.MoverActionMap.Move, this);
     }
 
-    public  void MoveAnim(float strength)
+    private void OnTriggerStay(Collider other)
     {
-        _animator.SetFloat(MoveValue, strength);
+        if (other.CompareTag("Plant"))
+        {
+            TakeVegetable(other);
+        }
+    }
+
+    private void TakeVegetable(Collider other)
+    {
+        var item = other.GetComponent<Plant>().GetVegetable();
+        if (item == null)
+            return;
+        item.FlyTo(_stackPoint);
+        SetCarryAnim(true);
     }
 
     private void SetCarryAnim(bool value)

@@ -1,4 +1,3 @@
-using _Ollie.Scripts;
 using UnityEngine;
 
 public class GardenBed : MonoBehaviour
@@ -8,7 +7,10 @@ public class GardenBed : MonoBehaviour
 
     private void Start()
     {
-        Grow(_landings[0]);
+        for (int i = 0; i < _landings.Length; i++)
+        {
+            Grow(_landings[i]);
+        }
     }
 
     private void Grow(Transform point)

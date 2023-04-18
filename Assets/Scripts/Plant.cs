@@ -1,35 +1,59 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor.Rendering;
 using UnityEngine;
 
-namespace _Ollie.Scripts
+public class Plant : MonoBehaviour
 {
-    public class Plant : MonoBehaviour
+    [SerializeField] private int _growthTime = 1000;
+    [SerializeField] private int _timeBusy = 1000;
+    [SerializeField] private Transform[] _landings;
+    [SerializeField] private Vegetable _vegetable;
+
+    private bool _isFull = false;
+    private List<Vegetable> _vegetables = new List<Vegetable>();
+    private bool _isBusy;
+
+    private async void Start()
     {
-        [SerializeField] private int _growthTime = 1000;
-        [SerializeField] private Transform[] _landings;
-        [SerializeField] private GameObject _vegetable;
+        while (!_isFull)
+        {
+            await SpawnVegetables();
+        }
+    }
+
+    private async Task SpawnVegetables()
+    {
+        foreach (Transform landing in _landings)
+        {
+            await Task.Delay(_growthTime);
+            var go = Instantiate(_vegetable, landing);
+            _vegetables.Add(go);
+        }
+
+        _isFull = true;
+    }
+
+    public Vegetable GetVegetable()
+    {
+        if (_isBusy)
+            return null; 
         
-        private bool _isFull = false;
-
-        private async void Start()
+        var veg = _vegetables.FirstOrDefault(vegetable => vegetable != null);
+        if (veg != null)
         {
-            while (!_isFull)
-            {
-               await SpawnVegetables();
-            }
+            _vegetables.Remove(veg);
+            _isFull = false; 
+            Busy();
         }
 
-        private async Task SpawnVegetables()
-        {
-            foreach (Transform landing in _landings)
-            {
-                await Task.Delay(_growthTime);
+        return veg;
+    }
 
-                Instantiate(_vegetable, landing);
-            }
-
-            _isFull = true;
-        }
+    private async void Busy()
+    {
+        _isBusy = true;
+        await Task.Delay(_timeBusy);
+        _isBusy = false;
     }
 }

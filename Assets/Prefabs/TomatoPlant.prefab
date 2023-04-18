@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1847354419508184496}
   - component: {fileID: -7394168425371427080}
+  - component: {fileID: 177126203385710387}
   m_Layer: 0
   m_Name: TomatoPlant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,13 +49,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464161012b0761541ac0503d20072c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _growthTime: 2222
+  _growthTime: 2600
+  _timeBusy: 500
   _landings:
   - {fileID: 6199280013830267095}
   - {fileID: 3608271777635461570}
   - {fileID: 5308968503209503452}
-  _vegetable: {fileID: 4837034304715307645, guid: e35b44b84fab1e34a9324daae99e656e,
+  _vegetable: {fileID: 8686909123559942780, guid: e35b44b84fab1e34a9324daae99e656e,
     type: 3}
+--- !u!135 &177126203385710387
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362567182369218314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!1 &5711105808089292629
 GameObject:
   m_ObjectHideFlags: 0
