@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Game : MonoBehaviour
 {
@@ -37,5 +36,4 @@ public class Game : MonoBehaviour
         _player.Construct(_inputPlayer, _joystick);
         _cameraTarget.Construct(_player.transform);
     }
-    
 }

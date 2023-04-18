@@ -4,9 +4,7 @@ using UnityEngine;
 enum PlayerState
 {
     Idle = 0,
-    IdleCarry = 1,
-    Moving = 2,
-    MovingCarry = 3
+    Carry = 1,
 }
     
 [RequireComponent(typeof(Mover), typeof(Rigidbody))]
@@ -17,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _sellTime;
     [SerializeField] private float _coinTime;
     [SerializeField] private Transform _stackPoint;
-    [SerializeField] private AnimatorOverrideController _animatorOverride;
     
     private Stack<Transform> _stackedBlocks;
     private bool _isMoving = false;

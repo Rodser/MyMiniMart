@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,28 +9,47 @@ public class Plant : MonoBehaviour
     [SerializeField] private Transform[] _landings;
     [SerializeField] private Vegetable _vegetable;
 
-    private bool _isFull = false;
-    private List<Vegetable> _vegetables = new List<Vegetable>();
+    private Vegetable[] _vegetables;
     private bool _isBusy;
+    private bool _canGrow;
 
-    private async void Start()
+    private void Start()
     {
-        while (!_isFull)
-        {
-            await SpawnVegetables();
-        }
+        _vegetables = new Vegetable[_landings.Length];
+        _canGrow = true;
+        SpawnVegetables();
     }
 
-    private async Task SpawnVegetables()
+    private async void SpawnVegetables()
     {
-        foreach (Transform landing in _landings)
+        if(_canGrow == false)
         {
+            return;
+        }
+        
+        _canGrow = false;
+        for (var index = 0; index < _landings.Length; index++)
+        {
+            if(_vegetables[index] != null)
+                continue;
+                
             await Task.Delay(_growthTime);
-            var go = Instantiate(_vegetable, landing);
-            _vegetables.Add(go);
+            var vegetable = Instantiate(_vegetable, _landings[index]);
+            vegetable.Construct(index);
+            _vegetables[index] = vegetable;
         }
 
-        _isFull = true;
+        _canGrow = true;
+        if (TryOnFull())
+            return;
+        SpawnVegetables();
+    }
+
+    private bool TryOnFull()
+    {
+        var isFull = _vegetables.All(vegetable => vegetable != null);
+
+        return isFull;
     }
 
     public Vegetable GetVegetable()
@@ -39,21 +57,21 @@ public class Plant : MonoBehaviour
         if (_isBusy)
             return null; 
         
-        var veg = _vegetables.FirstOrDefault(vegetable => vegetable != null);
-        if (veg != null)
+        var vegetable = _vegetables.FirstOrDefault(v => v != null);
+        if (vegetable != null)
         {
-            _vegetables.Remove(veg);
-            _isFull = false; 
+            _vegetables[vegetable.CurrentIndex] = null;
             Busy();
         }
 
-        return veg;
+        return vegetable;
     }
 
     private async void Busy()
     {
         _isBusy = true;
         await Task.Delay(_timeBusy);
+        SpawnVegetables();
         _isBusy = false;
     }
 }

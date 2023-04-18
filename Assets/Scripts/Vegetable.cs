@@ -1,12 +1,18 @@
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Vegetable : MonoBehaviour
 {
     [SerializeField] private float _speed;
     private float _time;
+    private int _currentIndex;
+    public int CurrentIndex => _currentIndex;
 
+    public void Construct(int index)
+    {
+        _currentIndex = index;
+    }
+    
     public async void FlyTo(Transform target)
     {
         var position = transform.position;
@@ -20,15 +26,11 @@ public class Vegetable : MonoBehaviour
 
     private async Task Fly(Vector3 startPosition, Vector3 up, Transform target)
     {
-        Debug.Log(startPosition);
-        Debug.Log(target.position);
-        
         while (_time < 1)
         {
             await Task.Yield();
             _time += _speed * Time.deltaTime;
             var targetPosition = target.position;      
-            Debug.Log(targetPosition);
             transform.position = GetBezier(startPosition, up, targetPosition, _time);
         }
     }
