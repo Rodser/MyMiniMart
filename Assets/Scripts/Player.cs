@@ -18,23 +18,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float _coinTime;
     [SerializeField] private ItemsPack _itemsPack;
     
-    private bool _isMoving = false;
-    private Vector3 _movePosition;
+    private static readonly int MoveValue = Animator.StringToHash("Move");
+    private static readonly int IsCarry = Animator.StringToHash("Carry");
+    private InputPlayerSystem _inputPlayer;
+    private Joystick _joystick;
     private Rigidbody _ridigbody;
     private Animator _animator;
+    private Mover _mover;
     private PlayerState _state;
     private bool _sellBlocks;
     private int _coinsToSpawn = 0;
-
-    private Mover _mover;
-    private Joystick _joystick;
-    private static readonly int MoveValue = Animator.StringToHash("Move");
-    private static readonly int IsCarry = Animator.StringToHash("Carry");
-    private float _timeLastMove;
-    private Vector2 _startTouchPosition;
-
-    private InputPlayerSystem _inputPlayer;
-    
+        
     public Rigidbody Ridigbody => _ridigbody;
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;

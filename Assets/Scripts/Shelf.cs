@@ -6,9 +6,9 @@ namespace DefaultNamespace
     public class Shelf : MonoBehaviour
     {
         [SerializeField] private ItemsPack _itemsPack;
+        [SerializeField] private int _timeBusy;
         
         private bool _isBusy;
-        private int _timeBusy;
 
         public Vegetable GetVegetable()
         {
@@ -27,9 +27,10 @@ namespace DefaultNamespace
             var vegetable = itemsPack.GiveItem();
             if(vegetable == null)
                 return;
-            
+
             // vegetable.transform.SetParent(_itemsPack.transform);
-            vegetable.CurrentIndex = _itemsPack.Count;
+            vegetable.transform.parent = null;
+            _itemsPack.Add(vegetable);
             vegetable.FlyTo(_itemsPack);
             Busy();
         }
