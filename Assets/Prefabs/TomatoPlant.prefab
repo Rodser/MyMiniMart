@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _growthTime: 2600
-  _timeBusy: 500
+  _timeBusy: 200
   _landings:
   - {fileID: 6199280013830267095}
   - {fileID: 3608271777635461570}
