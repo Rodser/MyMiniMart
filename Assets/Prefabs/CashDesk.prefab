@@ -75,6 +75,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3396125505600934769}
   - component: {fileID: 3378927826177225301}
+  - component: {fileID: 325261141208578670}
+  - component: {fileID: 3719679238812078385}
   m_Layer: 0
   m_Name: CashDesk
   m_TagString: Untagged
@@ -99,6 +101,7 @@ Transform:
   - {fileID: 8507715150118139438}
   - {fileID: 2979603512087395157}
   - {fileID: 1313088548292838471}
+  - {fileID: 7371088219952196719}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,10 +117,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8186624446be4f6384b0557f1a318d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cashierPoint: {fileID: 5943999460204488646}
-  _buyerPoint: {fileID: 8723593170576513644}
+  _cashierPoint: {fileID: 0}
+  _buyerPoint: {fileID: 0}
   _itemsPack: {fileID: 6199493223797211599}
+  _scannedPack: {fileID: 1645736920382506435}
+  _cashPack: {fileID: 586437769597306909}
   _timeBusy: 200
+--- !u!65 &325261141208578670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932174205058405850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.96}
+  m_Center: {x: -1.18, y: 0.5, z: 0}
+--- !u!65 &3719679238812078385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932174205058405850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.96}
+  m_Center: {x: 1.24, y: 0.5, z: 0}
+--- !u!1 &4548903856561887945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7371088219952196719}
+  - component: {fileID: 1645736920382506435}
+  m_Layer: 0
+  m_Name: Product (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7371088219952196719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548903856561887945}
+  m_LocalRotation: {x: -0.037869755, y: -0.706092, z: 0.037869755, w: 0.706092}
+  m_LocalPosition: {x: 0.369, y: 1.13, z: -1.809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3396125505600934769}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 6.14}
+--- !u!114 &1645736920382506435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548903856561887945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0200cfb06428411c995484e857b87540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startItemPoint: {fileID: 7371088219952196719}
+  _maxItems: 30
+  _itemShift: 0.3
+  _inBox: 1
+  _itemCountX: 4
+  _itemCountY: 5
+  _itemCountZ: 3
 --- !u!1 &6468369758722537212
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,11 +209,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8507715150118139438}
-  - component: {fileID: 8723593170576513644}
   m_Layer: 0
   m_Name: Buyer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -150,19 +231,6 @@ Transform:
   m_Father: {fileID: 3396125505600934769}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8723593170576513644
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6468369758722537212}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.96}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7393604526355605921
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,11 +291,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2811820886858589029}
-  - component: {fileID: 5943999460204488646}
   m_Layer: 0
   m_Name: Cashier
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -246,19 +313,6 @@ Transform:
   m_Father: {fileID: 3396125505600934769}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5943999460204488646
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8341032761436462759}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.96}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &7479405406987373923
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -54,10 +54,9 @@ public class ItemsPack : MonoBehaviour
 
     public Vegetable GiveItem()
     {
-        Vegetable item = null;
-
-        if (Count > 0)
-            item = _Items[^1];
+        if (Count == 0) return null;
+        
+        var item = _Items[^1];
 
         if (item != null)
         {

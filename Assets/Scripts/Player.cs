@@ -1,14 +1,5 @@
-using System.Collections.Generic;
-using DefaultNamespace;
-using Unity.VisualScripting;
 using UnityEngine;
 
-enum PlayerState
-{
-    Idle = 0,
-    Carry = 1,
-}
-    
 [RequireComponent(typeof(Mover), typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
@@ -25,7 +16,6 @@ public class Player : MonoBehaviour
     private Rigidbody _ridigbody;
     private Animator _animator;
     private Mover _mover;
-    private PlayerState _state;
     private bool _sellBlocks;
     private int _coinsToSpawn = 0;
         
@@ -49,7 +39,6 @@ public class Player : MonoBehaviour
     {
         _ridigbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
-        _state = PlayerState.Idle;
         _sellBlocks = false;
     }
 
@@ -61,29 +50,32 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Plant"))
+        if (other.TryGetComponent(out Plant plant))
         {
-            TakeVegetable(other);
+            TakeVegetable(plant);
         }
-        else if(other.CompareTag("Shelf"))
+        else if(other.TryGetComponent(out Shelf shelf))
         {
-            GiveVegetable(other);
+            GiveVegetable(shelf);
+        }
+        else if (other.TryGetComponent(out CashRegister cashRegister))
+        {
+            cashRegister.Buy();
         }
     }
 
-    private void GiveVegetable(Collider other)
+    private void GiveVegetable(Shelf shelf)
     {
-        var shelf = other.GetComponent<Shelf>();
         shelf.TakeVegetable(_itemsPack);
         if(_itemsPack.Count == 0)
             SetCarryAnim(false);
     }
 
-    private void TakeVegetable(Collider other)
+    private void TakeVegetable(Plant plant)
     {
         if(_itemsPack.IsFull)
             return;
-        var item = other.GetComponent<Plant>().GetVegetable();
+        var item = plant.GetVegetable();
         if (item == null)
             return;
         item.FlyTo(_itemsPack);

@@ -37,6 +37,7 @@ Transform:
   - {fileID: 6684253595698576378}
   - {fileID: 5198438933154682577}
   - {fileID: 6431225704113802490}
+  - {fileID: 2245244403916242439}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,6 +107,7 @@ MonoBehaviour:
   _pointCashDesk: {fileID: 2863980102536238746}
   _pointShelf: {fileID: 6061348185793645789}
   _pointBed: {fileID: 6684253595698576378}
+  _pointBuyer: {fileID: 2245244403916242439}
   _points:
   - {fileID: 5198438933154682577}
 --- !u!64 &4759223872386737019
@@ -122,6 +124,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &290495018046652722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2245244403916242439}
+  m_Layer: 0
+  m_Name: pointBuyer
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2245244403916242439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290495018046652722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.259, y: 0, z: -0.652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 175620312043879784}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123946853673716090
 GameObject:
   m_ObjectHideFlags: 0

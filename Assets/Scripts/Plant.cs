@@ -47,9 +47,7 @@ public class Plant : MonoBehaviour
 
     private bool TryOnFull()
     {
-        var isFull = _vegetables.All(vegetable => vegetable != null);
-
-        return isFull;
+        return _vegetables.All(vegetable => vegetable != null);
     }
 
     public Vegetable GetVegetable()

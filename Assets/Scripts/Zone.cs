@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class Zone : MonoBehaviour
@@ -9,18 +8,20 @@ public class Zone : MonoBehaviour
     [SerializeField] private Transform _pointCashDesk;
     [SerializeField] private Transform _pointShelf;
     [SerializeField] private Transform _pointBed;
+    [SerializeField] private Transform _pointBuyer;
     [SerializeField] private Transform[] _points;
-
-
+    
     public Transform PointPlayer => _pointPlayer;
-        
-        
-    public void StartSpawn(GameObject cashDesk, GameObject shelf, [NotNull] GameObject bed)
+    public Transform PointBuyer => _pointBuyer;
+    public Transform PointShelf => _pointShelf;
+    public Transform PointCashDesk => _pointCashDesk;
+
+    public void StartSpawn(GameObject cashDesk, GameObject shelf, GameObject plant)
     {
-        if (bed == null) throw new ArgumentNullException(nameof(bed));
+        if (plant == null) throw new ArgumentNullException(nameof(plant));
         Spawn(_pointCashDesk.position, cashDesk);
         Spawn(_pointShelf.position, shelf);
-        Spawn(_pointBed.position, bed);
+        Spawn(_pointBed.position, plant);
     }
 
     private GameObject Spawn(Vector3 position, GameObject item)

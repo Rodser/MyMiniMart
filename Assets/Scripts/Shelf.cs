@@ -1,45 +1,42 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class Shelf : MonoBehaviour
 {
-    public class Shelf : MonoBehaviour
+    [SerializeField] private ItemsPack _itemsPack;
+    [SerializeField] private int _timeBusy;
+        
+    private bool _isBusy;
+
+    public Vegetable GetVegetable()
     {
-        [SerializeField] private ItemsPack _itemsPack;
-        [SerializeField] private int _timeBusy;
-        
-        private bool _isBusy;
+        if (_isBusy)
+            return null;
 
-        public Vegetable GetVegetable()
-        {
-            if (_isBusy)
-                return null;
-
-            var vegetable = _itemsPack.GiveItem();
-            return vegetable;
-        }
+        var vegetable = _itemsPack.GiveItem();
         
-        public void TakeVegetable(ItemsPack itemsPack)
-        {
-            if (_itemsPack.IsFull || _isBusy)
-                return;
+        return vegetable;
+    }
+        
+    public void TakeVegetable(ItemsPack itemsPack)
+    {
+        if (_itemsPack.IsFull || _isBusy)
+            return;
             
-            var vegetable = itemsPack.GiveItem();
-            if(vegetable == null)
-                return;
+        var vegetable = itemsPack.GiveItem();
+        if(vegetable == null)
+            return;
 
-            // vegetable.transform.SetParent(_itemsPack.transform);
-            vegetable.transform.parent = null;
-            _itemsPack.Add(vegetable);
-            vegetable.FlyTo(_itemsPack);
-            Busy();
-        }
+        vegetable.transform.parent = null;
+        _itemsPack.Add(vegetable);
+        vegetable.FlyTo(_itemsPack);
+        Busy();
+    }
 
-        private async void Busy()
-        {
-            _isBusy = true;
-            await Task.Delay(_timeBusy);
-            _isBusy = false;
-        }
+    private async void Busy()
+    {
+        _isBusy = true;
+        await Task.Delay(_timeBusy);
+        _isBusy = false;
     }
 }
