@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using UnityEngine.InputSystem;
 
 [CustomEditor(typeof(ItemsPack))]
 public class ItemsPackEditor : Editor

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Game : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [Header("Префабы")]
     [SerializeField] private GameObject _cashDeskPrefab;
