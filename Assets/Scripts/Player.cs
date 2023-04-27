@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Mover), typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     
     private static readonly int MoveValue = Animator.StringToHash("Move");
     private static readonly int IsCarry = Animator.StringToHash("Carry");
-    private InputPlayerSystem _inputPlayer;
-    private Joystick _joystick;
     private Rigidbody _ridigbody;
     private Animator _animator;
     private Mover _mover;
@@ -22,13 +20,6 @@ public class Player : MonoBehaviour
     public Rigidbody Ridigbody => _ridigbody;
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;
-    public Joystick Joystick => _joystick;
-
-    public void Construct(InputPlayerSystem inputPlayer, Joystick joystick)
-    {
-        _inputPlayer = inputPlayer;
-        _joystick = joystick;
-    }
 
     public  void MoveAnim(float strength)
     {
@@ -40,12 +31,6 @@ public class Player : MonoBehaviour
         _ridigbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _sellBlocks = false;
-    }
-
-    private void Start()
-    {
-        _mover = GetComponent<Mover>();
-        _mover.Construct(_inputPlayer.MoverActionMap.Move, this);
     }
 
     private void OnTriggerStay(Collider other)

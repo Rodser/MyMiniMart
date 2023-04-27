@@ -19,7 +19,6 @@ public class Mover : MonoBehaviour
         _speedRotate = player.TurnSpeed;
         _parent = player;
         _playerRigidbody = player.Ridigbody;
-        _joystick = player.Joystick;
         Enable();
     }
 

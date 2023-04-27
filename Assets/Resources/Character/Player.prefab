@@ -175,19 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 9137455246563520764}
-  _camera: {fileID: 0}
---- !u!114 &3727271169645785513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6836890677547963440}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f43ae7e5c8783048a4d856e77af3f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9137455246563520764
 MonoBehaviour:
   m_ObjectHideFlags: 0
