@@ -6,9 +6,10 @@ namespace Infrastructure
     {
         public Game()
         {
-            InputService = new MobileInputService();
+            StateMachine = new GameStateMachine();
         }
-
-        public static IInputService InputService;
+        
+        public static IInputService InputService { get; set; }
+        public GameStateMachine StateMachine { get; set; }
     }
 }
