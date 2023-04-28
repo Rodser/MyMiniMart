@@ -4,9 +4,9 @@ namespace Infrastructure
 {
     public class Game
     {
-        public Game(ICoroutineRunner coroutineRunner)
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
         {
-            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain);
         }
         
         public static IInputService InputService { get; set; }

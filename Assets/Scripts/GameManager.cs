@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _zone.StartSpawn(_cashDeskPrefab, _shelfPrefab, _bedPrefab);
-        // _player = Instantiate(_playerPrefab, _zone.PointPlayer.position, Quaternion.identity);
-        // _cameraTarget.Construct(_player.transform);
+        _player = Instantiate(_playerPrefab, _zone.PointPlayer.position, Quaternion.identity);
+        _cameraTarget.Construct(_player.transform);
         _buyer = new BuyerSpawner(_zone.PointBuyer, _buyerPrefab, _zone);
     }
 }

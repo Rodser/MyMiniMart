@@ -27,7 +27,8 @@ namespace Infrastructure
 
             while (waitNextScene.isDone)
                 yield return null;
-            
+            yield return null;
+
             onLoaded?.Invoke();
         }
     }
