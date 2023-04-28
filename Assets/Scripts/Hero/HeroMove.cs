@@ -1,5 +1,6 @@
 using Infrastructure;
-using Services.Input;
+using Infrastructure.Services;
+using Infrastructure.Services.Input;
 using UnityEngine;
 
 namespace Hero
@@ -15,7 +16,7 @@ namespace Hero
 
         private void Start()
         {
-            _inputService = Game.InputService;
+            _inputService = AllServices.Container.Single<IInputService>();
             _playerRigidbody = _player.Ridigbody;
             _moveSpeed = _player.MoveSpeed;
             _speedRotate = _player.TurnSpeed;
