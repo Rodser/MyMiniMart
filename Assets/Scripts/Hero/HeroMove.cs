@@ -1,23 +1,29 @@
-using Infrastructure;
+using Data;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Hero
 {
-    public class HeroMove : MonoBehaviour
+    public class HeroMove : MonoBehaviour, ISaveProgress
     {
-        [SerializeField] private Player _player;
-        
+        private Player _player;
         private Rigidbody _playerRigidbody;
         private IInputService _inputService;
         private float _moveSpeed;
         private float _speedRotate;
 
-        private void Start()
+        private void Awake()
         {
             _inputService = AllServices.Container.Single<IInputService>();
-            _playerRigidbody = _player.Ridigbody;
+            _player = GetComponent<Player>();
+            _playerRigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
             _moveSpeed = _player.MoveSpeed;
             _speedRotate = _player.TurnSpeed;
         }
@@ -26,6 +32,19 @@ namespace Hero
         {
             var direction = new Vector3(_inputService.Axis.x, 0f, _inputService.Axis.y);
             Move(-direction);
+        }
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if (GetCurrentLevel() != progress.WorldData.PositionOnLevel.Level)
+                return;
+            var position = progress.WorldData.PositionOnLevel.Position.AsVector3();
+            _playerRigidbody.position = position;
+        }
+
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            progress.WorldData.PositionOnLevel = new PositionOnLevel(GetCurrentLevel(), _playerRigidbody.position.AsVector3Data());
         }
 
         private void Move(Vector3 move)
@@ -42,6 +61,11 @@ namespace Hero
                 _speedRotate * Time.fixedDeltaTime, 
                 0f);
             _playerRigidbody.MoveRotation(Quaternion.LookRotation(direction));
+        }
+
+        private static string GetCurrentLevel()
+        {
+            return SceneManager.GetActiveScene().name;
         }
     }
 }

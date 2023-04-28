@@ -29,7 +29,7 @@ public class LoadingCurtain : MonoBehaviour
             if (_curtain.alpha > 0)
             {
                 _curtain.alpha -= 0.05f;
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.03f);
             }
         }
     }
@@ -40,7 +40,7 @@ public class LoadingCurtain : MonoBehaviour
             if (_curtain.alpha < 1)
             {
                 _curtain.alpha += 0.05f;
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.03f);
             }
         }
     }

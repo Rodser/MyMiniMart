@@ -11,13 +11,10 @@ public class Player : MonoBehaviour
     
     private static readonly int MoveValue = Animator.StringToHash("Move");
     private static readonly int IsCarry = Animator.StringToHash("Carry");
-    private Rigidbody _ridigbody;
     private Animator _animator;
-    private Mover _mover;
     private bool _sellBlocks;
     private int _coinsToSpawn = 0;
         
-    public Rigidbody Ridigbody => _ridigbody;
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;
 
@@ -28,7 +25,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _ridigbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _sellBlocks = false;
     }
