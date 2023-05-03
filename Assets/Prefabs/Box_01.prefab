@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startItemPoint: {fileID: 2323917654116861973}
-  _maxItems: 18
-  _itemShift: 0.3
+  _maxItems: 6
+  _itemShift: 0.21
   _inBox: 1
   _itemCountX: 3
   _itemCountY: 2
@@ -116,7 +116,7 @@ GameObject:
   m_Layer: 0
   m_Name: point
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

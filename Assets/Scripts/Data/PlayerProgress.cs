@@ -7,8 +7,9 @@ namespace Data
     {
         public WorldData WorldData;
 
-        public PlayerProgress(string nameScene)
+        public PlayerProgress(string initialSceneName)
         {
+            WorldData = new WorldData(initialSceneName);
         }
     }
 }

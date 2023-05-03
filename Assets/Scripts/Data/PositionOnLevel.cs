@@ -13,5 +13,10 @@ namespace Data
             Level = level;
             Position = position;
         }
+
+        public PositionOnLevel(string initialSceneName)
+        {
+            Level = initialSceneName;
+        }
     }
 }

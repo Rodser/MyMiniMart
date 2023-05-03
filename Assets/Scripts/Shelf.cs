@@ -18,7 +18,7 @@ public class Shelf : MonoBehaviour
         return vegetable;
     }
         
-    public void TakeVegetable(ItemsPack itemsPack)
+    public void TakeItem(ItemsPack itemsPack)
     {
         if (_itemsPack.IsFull || _isBusy)
             return;

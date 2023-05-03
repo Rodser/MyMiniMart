@@ -1,5 +1,4 @@
 using Data;
-using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -9,23 +8,19 @@ namespace Hero
 {
     public class HeroMove : MonoBehaviour, ISaveProgress
     {
-        private Player _player;
         private Rigidbody _playerRigidbody;
         private IInputService _inputService;
         private float _moveSpeed;
         private float _speedRotate;
+        private HeroAnimator _heroAnimator;
 
-        private void Awake()
+        public void Construct(HeroConfig config, HeroAnimator animator, IInputService inputService)
         {
-            _inputService = AllServices.Container.Single<IInputService>();
-            _player = GetComponent<Player>();
+            _moveSpeed = config.MoveSpeed;
+            _speedRotate = config.RotateSpeed;
+            _inputService = inputService;
+            _heroAnimator = animator;
             _playerRigidbody = GetComponent<Rigidbody>();
-        }
-
-        private void Start()
-        {
-            _moveSpeed = _player.MoveSpeed;
-            _speedRotate = _player.TurnSpeed;
         }
 
         private void FixedUpdate()
@@ -40,6 +35,7 @@ namespace Hero
                 return;
             var position = progress.WorldData.PositionOnLevel.Position.AsVector3();
             _playerRigidbody.position = position;
+            Debug.Log(position);
         }
 
         public void UpdateProgress(PlayerProgress progress)
@@ -50,7 +46,7 @@ namespace Hero
         private void Move(Vector3 move)
         {
             var strength = Mathf.Clamp01(move.sqrMagnitude);
-            _player.MoveAnim(strength);
+            _heroAnimator.Move(strength);
         
             move *= _moveSpeed * Time.fixedDeltaTime;
             _playerRigidbody.MovePosition(_playerRigidbody.position + move);

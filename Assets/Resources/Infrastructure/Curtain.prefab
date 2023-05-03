@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 5084475515007471578}
   - component: {fileID: 1583729631040708221}
   - component: {fileID: 7293889412385183076}
+  - component: {fileID: -9156098497198286262}
   m_Layer: 5
   m_Name: Curtain
   m_TagString: Untagged
@@ -190,3 +191,15 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-9156098497198286262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466506932190271398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ea9f7b8a3a4fb899c14f5ab95421d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

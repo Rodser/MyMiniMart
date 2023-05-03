@@ -1,42 +1,56 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
-[CustomEditor(typeof(ItemsPack))]
-public class ItemsPackEditor : Editor
+namespace Editor
 {
-    private bool _inBox;
-    private ItemsPack _itemsPack;
- 
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(ItemsPack))]
+    public class ItemsPackEditor : UnityEditor.Editor
     {
-        _itemsPack = (ItemsPack)target;
-        DrawDefaultInspector();
-
-        _inBox = _itemsPack.InBox;
-
-        if (_inBox)
+        private bool _inBox;
+        private ItemsPack _itemsPack;
+ 
+        public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            _itemsPack = (ItemsPack)target;
+            DrawDefaultInspector();
 
-            var so = new SerializedObject(_itemsPack);
-            SerializedProperty x = so.FindProperty("_itemCountX");
-            SerializedProperty y = so.FindProperty("_itemCountY");
-            SerializedProperty z = so.FindProperty("_itemCountZ");
+            _inBox = _itemsPack.InBox;
+
+            if (_inBox)
+            {
+                serializedObject.Update();
+
+                var so = new SerializedObject(_itemsPack);
+                SerializedProperty x = so.FindProperty("_itemCountX");
+                SerializedProperty y = so.FindProperty("_itemCountY");
+                SerializedProperty z = so.FindProperty("_itemCountZ");
             
-            EditorGUILayout.BeginVertical();
+                EditorGUILayout.BeginVertical();
 
-            EditorGUILayout.Space();
+                EditorGUILayout.Space();
 
-            GUI.color = Color.red;
-            x.intValue = EditorGUILayout.IntField("Item Count X", x.intValue);
-            GUI.color = Color.green;
-            y.intValue = EditorGUILayout.IntField("Item Count Y", y.intValue);
-            GUI.color = Color.blue;
-            z.intValue = EditorGUILayout.IntField("Item Count Z", z.intValue);
+                GUI.color = Color.red;
+                x.intValue = EditorGUILayout.IntField("Item Count X", x.intValue);
+                GUI.color = Color.green;
+                y.intValue = EditorGUILayout.IntField("Item Count Y", y.intValue);
+                GUI.color = Color.blue;
+                z.intValue = EditorGUILayout.IntField("Item Count Z", z.intValue);
 
-            EditorGUILayout.EndVertical();
+                EditorGUILayout.EndVertical();
 
-            so.ApplyModifiedProperties();
+                so.ApplyModifiedProperties();
+            }
+        }
+
+        [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected)]
+        public static void RenderCustomGizmo(ItemsPack pack, GizmoType gizmo)
+        {
+            Gizmos.color = Color.green;
+
+            for (int i = 0; i < pack.MaxItems; i++)
+            {
+                Gizmos.DrawSphere(pack.GetPosition(i), 0.15f);
+            }
         }
     }
 }

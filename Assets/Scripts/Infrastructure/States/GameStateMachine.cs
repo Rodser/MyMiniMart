@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
+using Logic;
 
 namespace Infrastructure.States
 {
@@ -20,7 +22,8 @@ namespace Infrastructure.States
                     this,
                     sceneLoader,
                     loadingCurtain, 
-                    services.Single<IGameFactory>()),
+                    services.Single<IGameFactory>(),                 
+                    services.Single<IPersistentProgressService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(
                     this, 
                     services.Single<IPersistentProgressService>(),

@@ -340,6 +340,11 @@ PrefabInstance:
       propertyPath: _itemCountZ
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5505933552186676179, guid: cfab9ccb93c0d704bb788a93cee7fe06,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfab9ccb93c0d704bb788a93cee7fe06, type: 3}
 --- !u!4 &1147484560201057485 stripped
