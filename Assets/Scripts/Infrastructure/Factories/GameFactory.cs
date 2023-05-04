@@ -5,6 +5,7 @@ using Infrastructure.Services;
 using Infrastructure.Services.Configs;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
+using Logic;
 using UnityEngine;
 
 namespace Infrastructure.Factories
@@ -36,6 +37,10 @@ namespace Infrastructure.Factories
             HeroMove heroMove = hero.GetComponent<HeroMove>();
             heroMove.Construct(config , animator, _container.Single<IInputService>());
 
+            GameObject cam = InstantiateRegistered(AssetPath.CameraPath, at.transform.position);
+            CameraFollow cameraFollow = cam.GetComponentInChildren<CameraFollow>();
+            cameraFollow.Construct(hero.transform);
+            
             return hero;
         }
 

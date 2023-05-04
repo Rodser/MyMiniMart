@@ -1,22 +1,22 @@
 using UnityEngine;
 
-internal class BuyerSpawner
+internal class BuyerSpawner : MonoBehaviour, ISpawner
 {
-    private readonly Transform _zonePointBuyer;
-    private readonly Buyer _buyerPrefab;
-    private readonly Zone _zone;
+    private readonly Buyer _prefab;
 
-    public BuyerSpawner(Transform zonePointBuyer, Buyer buyerPrefab, Zone zone)
+    public BuyerSpawner(Buyer prefab)
     {
-        _zonePointBuyer = zonePointBuyer;
-        _buyerPrefab = buyerPrefab;
-        _zone = zone;
-        Spawner();
+        _prefab = prefab;
     }
+    
+    public void Spawn()
+    {
+        // TODO: нужна фабрика
+        var buyer = Object.Instantiate(_prefab, transform.position, Quaternion.identity);
+    }
+}
 
-    private void Spawner()
-    {
-        var buyer = Object.Instantiate(_buyerPrefab, _zonePointBuyer.position, Quaternion.identity);
-        buyer.Construct(_zone);
-    }
+internal interface ISpawner
+{
+    void Spawn();
 }

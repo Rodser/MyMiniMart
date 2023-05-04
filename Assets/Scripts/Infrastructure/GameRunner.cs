@@ -8,7 +8,7 @@ namespace Infrastructure
 
         private void Awake()
         {
-            var bootstrapper = FindFirstObjectByType<Bootstrapper>();
+            var bootstrapper = FindObjectOfType(typeof(Bootstrapper));
             if (bootstrapper != null) 
                 return;
             Instantiate(_bootstrapper);
