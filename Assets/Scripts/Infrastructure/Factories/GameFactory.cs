@@ -24,9 +24,17 @@ namespace Infrastructure.Factories
         public List<ISaveProgressReader> ProgressReaders { get; set; } = new List<ISaveProgressReader>(); 
         public List<ISaveProgress> ProgressWriters { get; set; } = new List<ISaveProgress>();
 
-        public GameObject CreateHero(GameObject at)
+        public void CreateWorld()
         {
-            GameObject hero = InstantiateRegistered(AssetPath.HeroPath, at.transform.position);
+            var levelConfig = _container.Single<IConfigService>().GetConfig<LevelConfig>(AssetPath.LevelConfigPath);
+            HeroSpawner heroAt = levelConfig.HeroSpawner;
+           
+            var hero = CreateHero(levelConfig.HeroPosition);
+        }
+
+        private GameObject CreateHero(Vector3 at)
+        {
+            GameObject hero = InstantiateRegistered(AssetPath.HeroPath, at);
             HeroAnimator animator = hero.GetComponent<HeroAnimator>();
 
             HeroInterplay heroInterplay = hero.GetComponent<HeroInterplay>();
@@ -37,7 +45,7 @@ namespace Infrastructure.Factories
             HeroMove heroMove = hero.GetComponent<HeroMove>();
             heroMove.Construct(config , animator, _container.Single<IInputService>());
 
-            GameObject cam = InstantiateRegistered(AssetPath.CameraPath, at.transform.position);
+            GameObject cam = InstantiateRegistered(AssetPath.CameraPath, at);
             CameraFollow cameraFollow = cam.GetComponentInChildren<CameraFollow>();
             cameraFollow.Construct(hero.transform);
             

@@ -1,3 +1,4 @@
+using Logic;
 using UnityEngine;
 
 internal class BuyerSpawner : MonoBehaviour, ISpawner
@@ -14,9 +15,4 @@ internal class BuyerSpawner : MonoBehaviour, ISpawner
         // TODO: нужна фабрика
         var buyer = Object.Instantiate(_prefab, transform.position, Quaternion.identity);
     }
-}
-
-internal interface ISpawner
-{
-    void Spawn();
 }

@@ -9,8 +9,8 @@ namespace Infrastructure.Factories
     {
         public List<ISaveProgressReader> ProgressReaders { get; set; }
         public List<ISaveProgress> ProgressWriters { get; set; }
-        GameObject CreateHero(GameObject at);
-        void CreateHud();
+       void CreateHud();
         void CleanUp();
+        void CreateWorld();
     }
 }

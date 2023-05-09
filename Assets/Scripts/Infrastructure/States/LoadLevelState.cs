@@ -45,9 +45,7 @@ namespace Infrastructure.States
 
         private void InitializeGameWorld()
         {
-            var point = GameObject.Find("PointPlayer");
-                Debug.Log(point.transform.position);
-            GameObject hero = _gameFactory.CreateHero(point);
+            _gameFactory.CreateWorld();
             _gameFactory.CreateHud();
         }
 

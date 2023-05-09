@@ -6,5 +6,6 @@ namespace Infrastructure.Asset
         public const string HeroConfigPath = "Configs/Hero";
         public const string HudPath = "Hud/Hud";
         public const string CameraPath = "Infrastructure/Camera";
+        public const string LevelConfigPath = "Configs/LevelConfig";
     }
 }

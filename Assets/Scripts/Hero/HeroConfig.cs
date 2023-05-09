@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Hero
 {
-    [CreateAssetMenu(fileName = "Hero", menuName = "Game/Hero", order = 0)]
+    [CreateAssetMenu(fileName = "Hero", menuName = "Game/Hero")]
     public class HeroConfig : ScriptableObject
     {
         public float MoveSpeed;
