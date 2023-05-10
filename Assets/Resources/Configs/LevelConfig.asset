@@ -13,10 +13,17 @@ MonoBehaviour:
   m_Name: LevelConfig
   m_EditorClassIdentifier: 
   Spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - Marker: 0
+    Position: {x: -2.01, y: 0, z: 1.49}
+  - Marker: 0
+    Position: {x: 4.35, y: 0, z: 5.37}
+  - Marker: 1
+    Position: {x: 0.59999996, y: 0.15, z: 5.9399996}
+  - Marker: 0
+    Position: {x: -4.3399997, y: 0, z: 8.87}
+  - Marker: 0
+    Position: {x: -22, y: 0.25, z: 12.04}
+  - Marker: 0
+    Position: {x: 0.7, y: 0, z: 11.3}
+  - Marker: 0
+    Position: {x: 23.210001, y: 0.15, z: -17.18}

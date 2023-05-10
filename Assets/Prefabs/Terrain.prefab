@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 175620312043879784}
   - component: {fileID: 175620312040455496}
   - component: {fileID: 175620312041455496}
-  - component: {fileID: 4104122471949436554}
   - component: {fileID: 4759223872386737019}
   m_Layer: 0
   m_Name: Terrain
@@ -91,25 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4104122471949436554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175620312043381064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682ecfc3269cb3d46a9897840e4678a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pointPlayer: {fileID: 6431225704113802490}
-  _pointCashDesk: {fileID: 2863980102536238746}
-  _pointShelf: {fileID: 6061348185793645789}
-  _pointBed: {fileID: 6684253595698576378}
-  _pointBuyer: {fileID: 2245244403916242439}
-  _points:
-  - {fileID: 5198438933154682577}
 --- !u!64 &4759223872386737019
 MeshCollider:
   m_ObjectHideFlags: 0

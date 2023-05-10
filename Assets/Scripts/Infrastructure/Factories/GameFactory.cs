@@ -26,10 +26,10 @@ namespace Infrastructure.Factories
 
         public void CreateWorld()
         {
-            var spawner = InstantiateRegistered(AssetPath.LevelConfigPath).GetComponent<Spawner>();
+            // var spawner = InstantiateRegistered(AssetPath.LevelConfigPath).GetComponent<Spawner>();
             var levelConfig = _container.Single<IConfigService>().GetConfig<LevelConfig>(AssetPath.LevelConfigPath);
-            Spawner heroAt = levelConfig.GetSpawner(SpawnerMarker.Hero);
-           Debug.Log(heroAt, spawner);
+            SpawnerData heroAt = levelConfig.GetSpawner(SpawnerMarker.Hero);
+           Debug.Log(heroAt);
             GameObject hero = CreateHero(heroAt.Position);
         }
 

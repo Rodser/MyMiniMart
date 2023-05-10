@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: -2.01, y: 0, z: 1.49}
 --- !u!114 &12072911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ PrefabInstance:
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.95881975
       objectReference: {fileID: 0}
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.28401542
       objectReference: {fileID: 0}
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
@@ -336,7 +336,7 @@ PrefabInstance:
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -33
       objectReference: {fileID: 0}
     - target: {fileID: 175620312043879784, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
         type: 3}
@@ -423,7 +423,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4104122471949436554, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a, type: 3}
 --- !u!1 &1352771153 stripped
 GameObject:
@@ -462,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: -4.3399997, y: 0, z: 8.87}
 --- !u!114 &1352771158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: 0.7, y: 0, z: 11.3}
 --- !u!114 &1352771160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: 4.35, y: 0, z: 5.37}
 --- !u!114 &1352771162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,8 +621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Marker: 1
+  Position: {x: 0.59999996, y: 0.15, z: 5.9399996}
 --- !u!114 &1934880811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: 23.210001, y: 0.15, z: -17.18}
 --- !u!114 &2010250232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: 0
-  Position: {x: 0, y: 0, z: 0}
+  Position: {x: -22, y: 0.25, z: 12.04}
 --- !u!114 &2089642497
 MonoBehaviour:
   m_ObjectHideFlags: 0

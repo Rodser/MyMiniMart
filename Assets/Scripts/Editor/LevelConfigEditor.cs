@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using Infrastructure.Services.Configs;
 using Logic;
+using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +22,11 @@ namespace Editor
      
             if (GUILayout.Button("Records Spawners"))
             {
-                Spawner[] heroSpawners = GameObject.FindObjectsByType<Spawner>(FindObjectsSortMode.None);
+                List<SpawnerData> heroSpawners = FindObjectsByType<Spawner>(FindObjectsSortMode.None)
+                    .Select(s => new SpawnerData(s.Marker, s.transform.position))
+                    .ToList();
+
+                
                 levelConfig.Spawners = heroSpawners;
             }
 
