@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using Hero;
+using System.Linq;
 using Logic;
 using UnityEngine;
 
@@ -8,21 +7,11 @@ namespace Infrastructure.Services.Configs
     [CreateAssetMenu(fileName = "LevelConfig", menuName = "Game/LevelConfig")]
     public class LevelConfig : ScriptableObject
     {
-        public List<ISpawner> Spawners;
-        public HeroSpawner HeroSpawner;
-        public Vector3 HeroPosition;
+        public Spawner[] Spawners;
 
-        public T GetSpawner<T>() where T : ISpawner, new()
+        public Spawner GetSpawner(SpawnerMarker marker)
         {
-            foreach (var spawner in Spawners)
-            {
-                if (spawner is T spawn)
-                {
-                    return spawn;
-                }
-            }
-
-            return new T();
+            return Spawners.FirstOrDefault(spawner => spawner.Marker == marker);
         }
     }
 }

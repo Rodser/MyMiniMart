@@ -48,6 +48,8 @@ MonoBehaviour:
   _startItemPoint: {fileID: 1313088548292838471}
   _maxItems: 100
   _itemShift: 0.3
+  Color: {r: 0.08904416, g: 0.8207547, b: 0.10381164, a: 1}
+  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 20
@@ -196,6 +198,8 @@ MonoBehaviour:
   _startItemPoint: {fileID: 7371088219952196719}
   _maxItems: 30
   _itemShift: 0.3
+  Color: {r: 0.8490566, g: 0.3414959, b: 0.1481844, a: 1}
+  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 5
@@ -278,6 +282,8 @@ MonoBehaviour:
   _startItemPoint: {fileID: 2979603512087395157}
   _maxItems: 30
   _itemShift: 0.3
+  Color: {r: 0.83997625, g: 0.8773585, b: 0.10346207, a: 1}
+  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 5

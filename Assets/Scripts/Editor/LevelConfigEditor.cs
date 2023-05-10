@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Hero;
 using Infrastructure.Services.Configs;
 using Logic;
 using UnityEditor;
@@ -14,26 +12,19 @@ namespace Editor
         {
             DrawDefaultInspector();
             var levelConfig = (LevelConfig)target;
-            var so = new SerializedObject(levelConfig);
-            
-            SerializedProperty position = so.FindProperty("HeroPosition");
+            var serObject = new SerializedObject(levelConfig);
             
             EditorGUILayout.BeginVertical();
             EditorGUILayout.Space();
      
-            if (GUILayout.Button("Find Spawners"))
+            if (GUILayout.Button("Records Spawners"))
             {
-                var spawners = new List<ISpawner>();
-                var heroPoint = GameObject.FindAnyObjectByType<HeroSpawner>();
-                spawners.Add(heroPoint);
-
-                levelConfig.HeroSpawner = heroPoint;
-                position.vector3Value = EditorGUILayout.Vector3Field("Hero Position", position.vector3Value);
-                levelConfig.Spawners = spawners;
+                Spawner[] heroSpawners = GameObject.FindObjectsByType<Spawner>(FindObjectsSortMode.None);
+                levelConfig.Spawners = heroSpawners;
             }
 
             EditorGUILayout.EndVertical();
-            so.ApplyModifiedProperties();
+            serObject.ApplyModifiedProperties();
         }
     }
 }

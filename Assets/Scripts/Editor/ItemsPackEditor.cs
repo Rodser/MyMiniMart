@@ -6,25 +6,19 @@ namespace Editor
     [CustomEditor(typeof(ItemsPack))]
     public class ItemsPackEditor : UnityEditor.Editor
     {
-        private bool _inBox;
-        private ItemsPack _itemsPack;
- 
         public override void OnInspectorGUI()
         {
-            _itemsPack = (ItemsPack)target;
+            ItemsPack itemsPack = (ItemsPack)target;
             DrawDefaultInspector();
 
-            _inBox = _itemsPack.InBox;
-
-            if (_inBox)
-            {
-                serializedObject.Update();
-
-                var so = new SerializedObject(_itemsPack);
-                SerializedProperty x = so.FindProperty("_itemCountX");
-                SerializedProperty y = so.FindProperty("_itemCountY");
-                SerializedProperty z = so.FindProperty("_itemCountZ");
+            var serObject = new SerializedObject(itemsPack);
             
+            if (itemsPack.InBox)
+            {
+                SerializedProperty x = serObject.FindProperty("_itemCountX");
+                SerializedProperty y = serObject.FindProperty("_itemCountY");
+                SerializedProperty z = serObject.FindProperty("_itemCountZ");
+
                 EditorGUILayout.BeginVertical();
 
                 EditorGUILayout.Space();
@@ -37,19 +31,19 @@ namespace Editor
                 z.intValue = EditorGUILayout.IntField("Item Count Z", z.intValue);
 
                 EditorGUILayout.EndVertical();
-
-                so.ApplyModifiedProperties();
             }
+
+            serObject.ApplyModifiedProperties();
         }
 
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected)]
         public static void RenderCustomGizmo(ItemsPack pack, GizmoType gizmo)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = pack.Marker.Color;
 
             for (int i = 0; i < pack.MaxItems; i++)
             {
-                Gizmos.DrawSphere(pack.GetPosition(i), 0.15f);
+                Gizmos.DrawSphere(pack.GetPosition(i), pack.Marker.SizeGizmo);
             }
         }
     }

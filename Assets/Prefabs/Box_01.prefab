@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 92765720848203569}
   - component: {fileID: 92765720847072753}
   - component: {fileID: 3390153759898904396}
+  - component: {fileID: 1198912585424285179}
   m_Layer: 0
   m_Name: Box_01
   m_TagString: Untagged
@@ -98,12 +99,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startItemPoint: {fileID: 2323917654116861973}
-  _maxItems: 6
+  _maxItems: 12
   _itemShift: 0.21
   _inBox: 1
   _itemCountX: 3
   _itemCountY: 2
   _itemCountZ: 2
+--- !u!114 &1198912585424285179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92765720845132593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 0.5156759, g: 0.8584906, b: 0.23082057, a: 1}
+  SizeGizmo: 0.09
 --- !u!1 &5505933552186676179
 GameObject:
   m_ObjectHideFlags: 0

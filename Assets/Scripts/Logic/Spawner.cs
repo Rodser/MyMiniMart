@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace Logic
 {
+    [RequireComponent(typeof(Marker))]
+    [Serializable]
     public class Spawner : MonoBehaviour, ISpawner
     {
-        public SpawnerType SpawnerType;
-        public Color Color;
-    }
+        public SpawnerMarker Marker;
+        public Vector3 Position;
+        }
 }

@@ -1,6 +1,6 @@
 namespace Logic
 {
-    public enum SpawnerType
+    public enum SpawnerMarker
     {
         Hero = 1,
         Buyer = 2,
