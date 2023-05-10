@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 4
   Position: {x: -2.01, y: 0, z: 1.49}
 --- !u!114 &12072911
 MonoBehaviour:
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SizeGizmo: 0.15
+  Color: {r: 0.5921569, g: 0.43137258, b: 0.30980393, a: 1}
+  SizeGizmo: 0.87
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 3
   Position: {x: -4.3399997, y: 0, z: 8.87}
 --- !u!114 &1352771158
 MonoBehaviour:
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SizeGizmo: 0.15
+  Color: {r: 0.32941177, g: 0.5019608, b: 0.28627452, a: 1}
+  SizeGizmo: 1.02
 --- !u!114 &1352771159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 3
   Position: {x: 0.7, y: 0, z: 11.3}
 --- !u!114 &1352771160
 MonoBehaviour:
@@ -504,8 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SizeGizmo: 0.15
+  Color: {r: 0.32941177, g: 0.5019608, b: 0.28627452, a: 1}
+  SizeGizmo: 0.84
 --- !u!114 &1352771161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 5
   Position: {x: 4.35, y: 0, z: 5.37}
 --- !u!114 &1352771162
 MonoBehaviour:
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.12415449, g: 0.44586343, b: 0.8490566, a: 1}
+  Color: {r: 0.44705886, g: 0.5372549, b: 0.68235296, a: 1}
   SizeGizmo: 0.57
 --- !u!1001 &1632799015
 PrefabInstance:
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.8901961, g: 0.7063482, b: 0.12156865, a: 1}
+  Color: {r: 0.9176471, g: 0.7607844, b: 0.09411766, a: 1}
   SizeGizmo: 0.63
 --- !u!1 &2010250229
 GameObject:
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 6
   Position: {x: 23.210001, y: 0.15, z: -17.18}
 --- !u!114 &2010250232
 MonoBehaviour:
@@ -696,8 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SizeGizmo: 0.15
+  Color: {r: 0.4039216, g: 0.25882354, b: 0.5254902, a: 1}
+  SizeGizmo: 0.81
 --- !u!1 &2089642495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 290495018046652722, guid: 8f885f5dbf6ba8d439ad69a769b8ea6a,
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d8134baa7c4317a111ace8f72131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: 0
+  Marker: 2
   Position: {x: -22, y: 0.25, z: 12.04}
 --- !u!114 &2089642497
 MonoBehaviour:
@@ -730,5 +730,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SizeGizmo: 0.15
+  Color: {r: 0.7843138, g: 0.23529413, b: 0.14901961, a: 1}
+  SizeGizmo: 0.96

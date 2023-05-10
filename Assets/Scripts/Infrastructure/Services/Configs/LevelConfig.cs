@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Logic;
@@ -14,19 +13,6 @@ namespace Infrastructure.Services.Configs
         public SpawnerData GetSpawner(SpawnerMarker marker)
         {
            return Spawners.FirstOrDefault(spawner => spawner.Marker == marker);
-        }
-    }
-
-    [Serializable]
-    public class SpawnerData
-    {
-        public SpawnerMarker Marker;
-        public Vector3 Position;
-
-        public SpawnerData(SpawnerMarker marker, Vector3 position)
-        {
-            Marker = marker;
-            Position = position;
         }
     }
 }

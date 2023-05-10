@@ -5,7 +5,6 @@ using Infrastructure.Services.Configs;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
-using UnityEngine;
 
 namespace Infrastructure.States
 {
