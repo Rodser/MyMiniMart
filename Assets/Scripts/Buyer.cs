@@ -13,7 +13,6 @@ internal class Buyer : MonoBehaviour
     private NavMeshAgent _agent;
     private PersonState _state;
     private Animator _animator;
-    private Zone _zone;
 
     private void Awake()
     {
@@ -28,11 +27,9 @@ internal class Buyer : MonoBehaviour
         MoveAnim(_agent.velocity.magnitude);
     }
 
-    public void Construct(Zone zone)
+    public void Construct()
     {
-        _zone = zone;
         SetCarryAnim(false);
-        ChangeState(PersonState.Picking, _zone.PointShelf.position);
     }
     
     private void OnTriggerStay(Collider other)
@@ -58,7 +55,6 @@ internal class Buyer : MonoBehaviour
     {
         if (_itemsPack.IsFull)
         {
-            ChangeState(PersonState.Buy, _zone.PointCashDesk.position);
             return;
         }
         var item = shelf.GetVegetable();

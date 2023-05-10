@@ -4,7 +4,7 @@ namespace Logic
     {
         Hero = 1,
         Buyer = 2,
-        Plant = 3,
+        GardenBed = 3,
         Shelf = 4,
         CashDesk = 5,
         Away = 6,

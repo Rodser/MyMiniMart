@@ -646,8 +646,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2010250230}
-  - component: {fileID: 2010250232}
   - component: {fileID: 2010250231}
+  - component: {fileID: 2010250232}
   m_Layer: 0
   m_Name: pointAway
   m_TagString: Untagged

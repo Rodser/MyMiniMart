@@ -26,9 +26,24 @@ namespace Infrastructure.Factories
 
         public void CreateWorld()
         {
+            SpawnerData heroData = GetSpawnerData(SpawnerMarker.Hero);
+            GameObject hero = CreateHero(heroData.Position);
+
+            SpawnerData gardenBedData = GetSpawnerData(SpawnerMarker.GardenBed);
+            GameObject gardenBed = CreateGardenBed(gardenBedData.Position);
+
+        }
+
+        private GameObject CreateGardenBed(Vector3 at)
+        {
+            GameObject gardenBed = InstantiateRegistered(AssetPath.GardenBedPath, at);
+            return gardenBed;
+        }
+
+        private SpawnerData GetSpawnerData(SpawnerMarker spawnerMarker)
+        {
             var levelConfig = _container.Single<IConfigService>().GetConfig<LevelConfig>(AssetPath.LevelConfigPath);
-            SpawnerData heroAt = levelConfig.GetSpawner(SpawnerMarker.Hero);
-            GameObject hero = CreateHero(heroAt.Position);
+            return levelConfig.GetSpawner(spawnerMarker);
         }
 
         private GameObject CreateHero(Vector3 at)

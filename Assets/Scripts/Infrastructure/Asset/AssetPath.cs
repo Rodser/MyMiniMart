@@ -7,5 +7,6 @@ namespace Infrastructure.Asset
         public const string HudPath = "Hud/Hud";
         public const string CameraPath = "Infrastructure/Camera";
         public const string LevelConfigPath = "Configs/LevelConfig";
+        public const string GardenBedPath = "Subjects/GardenBed";
     }
 }
