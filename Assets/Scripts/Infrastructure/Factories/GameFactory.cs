@@ -6,6 +6,7 @@ using Infrastructure.Services.Configs;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Logic;
+using Subject;
 using UnityEngine;
 
 namespace Infrastructure.Factories
@@ -34,10 +35,22 @@ namespace Infrastructure.Factories
 
         }
 
+        public void CreateHud() => 
+            InstantiateRegistered(AssetPath.HudPath);
+
+        public void CleanUp()
+        {
+            ProgressWriters.Clear();
+            ProgressReaders.Clear();
+        }
+        
         private GameObject CreateGardenBed(Vector3 at)
         {
-            GameObject gardenBed = InstantiateRegistered(AssetPath.GardenBedPath, at);
-            return gardenBed;
+            GardenBedConfig bedConfig = _container.Single<IConfigService>().GetConfig<GardenBedConfig>(AssetPath.GardenBedConfigPath);
+            GameObject bed = InstantiateRegistered(bedConfig.GardenBed, at);
+            GardenBed gardenBed = bed.GetComponent<GardenBed>();
+            gardenBed.StartGrows(bedConfig.Plant);
+            return bed;
         }
 
         private SpawnerData GetSpawnerData(SpawnerMarker spawnerMarker)
@@ -48,14 +61,16 @@ namespace Infrastructure.Factories
 
         private GameObject CreateHero(Vector3 at)
         {
-            GameObject hero = InstantiateRegistered(AssetPath.HeroPath, at);
+            HeroConfig config = _container.Single<IConfigService>().GetConfig<HeroConfig>(AssetPath.HeroConfigPath);
+            // GameObject hero = InstantiateRegistered(AssetPath.HeroPath, at);
+            var hero = InstantiateRegistered(config.HeroPrefab);
+
             HeroAnimator animator = hero.GetComponent<HeroAnimator>();
 
             HeroInterplay heroInterplay = hero.GetComponent<HeroInterplay>();
             ItemsPack pack = hero.GetComponentInChildren<ItemsPack>();
             heroInterplay.Construct(pack, animator);
 
-            HeroConfig config = _container.Single<IConfigService>().GetConfig<HeroConfig>(AssetPath.HeroConfigPath);
             HeroMove heroMove = hero.GetComponent<HeroMove>();
             heroMove.Construct(config , animator, _container.Single<IInputService>());
 
@@ -64,15 +79,6 @@ namespace Infrastructure.Factories
             cameraFollow.Construct(hero.transform);
             
             return hero;
-        }
-
-        public void CreateHud() => 
-            InstantiateRegistered(AssetPath.HudPath);
-
-        public void CleanUp()
-        {
-            ProgressWriters.Clear();
-            ProgressReaders.Clear();
         }
 
         private GameObject InstantiateRegistered(string prefabPath, Vector3 at)
@@ -88,7 +94,21 @@ namespace Infrastructure.Factories
             RegisterProgressWatcher(go);
             return go;
         }
-
+  
+        private GameObject InstantiateRegistered(GameObject prefab)
+        {
+            GameObject go = Object.Instantiate(prefab);
+            RegisterProgressWatcher(go);
+            return go;
+        }
+        
+        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
+        {
+            GameObject go = Object.Instantiate(prefab, at, Quaternion.identity);
+            RegisterProgressWatcher(go);
+            return go;
+        }
+        
         private void RegisterProgressWatcher(GameObject go)
         {
             foreach (ISaveProgressReader progressReader in go.GetComponentsInChildren<ISaveProgressReader>())

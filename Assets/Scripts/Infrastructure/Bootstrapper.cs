@@ -12,10 +12,9 @@ namespace Infrastructure
 
         private void Awake()
         {
+            DontDestroyOnLoad(this);
             _game = new Game(this, Instantiate(_curtain));
             _game.StateMachine.Enter<BootstrapState>();
-            
-            DontDestroyOnLoad(this);
         }
     }
 }

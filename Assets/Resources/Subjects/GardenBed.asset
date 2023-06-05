@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17cc5d85188d44d2b623f0ac3b97ebbb, type: 3}
-  m_Name: Hero
+  m_Script: {fileID: 11500000, guid: 214f70d6506c487cb1dfbefc7c65fd52, type: 3}
+  m_Name: GardenBed
   m_EditorClassIdentifier: 
-  <HeroPrefab>k__BackingField: {fileID: 6836890677547963440, guid: 775137d2928e4064cb390aa3e8cbe26d,
+  <GardenBed>k__BackingField: {fileID: 7563238722561400302, guid: e2b08c80c02bd4e4e86cc1d6c5d75844,
     type: 3}
-  <MoveSpeed>k__BackingField: 5
-  <RotateSpeed>k__BackingField: 555
+  <Plant>k__BackingField: {fileID: -7394168425371427080, guid: d225f171dbdd0b846b2f8af00034b9f1,
+    type: 3}

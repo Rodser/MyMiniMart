@@ -9,7 +9,7 @@ namespace Infrastructure.Services.Configs
     {
         public SpawnerMarker Marker;
         public Vector3 Position;
-
+        
         public SpawnerData(SpawnerMarker marker, Vector3 position)
         {
             Marker = marker;
