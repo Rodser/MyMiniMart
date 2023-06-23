@@ -1,3 +1,4 @@
+using Infrastructure.Services.Configs;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class Shelf : MonoBehaviour
 {
     [SerializeField] private ItemsPack _itemsPack;
     [SerializeField] private int _timeBusy;
+    [field: SerializeField] public Transform TargetBuyer { get; private set; }
         
     private bool _isBusy;
 

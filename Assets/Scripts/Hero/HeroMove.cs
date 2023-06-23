@@ -12,9 +12,9 @@ namespace Hero
         private IInputService _inputService;
         private float _moveSpeed;
         private float _speedRotate;
-        private HeroAnimator _heroAnimator;
+        private MoveAnimator _heroAnimator;
 
-        public void Construct(HeroConfig config, HeroAnimator animator, IInputService inputService)
+        public void Construct(HeroConfig config, MoveAnimator animator, IInputService inputService)
         {
             _moveSpeed = config.MoveSpeed;
             _speedRotate = config.RotateSpeed;
@@ -35,7 +35,6 @@ namespace Hero
                 return;
             var position = progress.WorldData.PositionOnLevel.Position.AsVector3();
             _playerRigidbody.position = position;
-            Debug.Log(position);
         }
 
         public void UpdateProgress(PlayerProgress progress)

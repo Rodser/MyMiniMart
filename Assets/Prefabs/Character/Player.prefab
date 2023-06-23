@@ -164,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 3519578168939141199, guid: 01e0274592bc8124a864842c4d8ea08c,
         type: 3}
       propertyPath: _maxItems
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e0274592bc8124a864842c4d8ea08c, type: 3}

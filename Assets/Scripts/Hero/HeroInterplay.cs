@@ -5,10 +5,10 @@ namespace Hero
     [RequireComponent(typeof(Rigidbody))]
     public class HeroInterplay : MonoBehaviour
     {
-        private HeroAnimator _heroAnimator;
+        private MoveAnimator _heroAnimator;
         private ItemsPack _itemsPack;
 
-        public void Construct(ItemsPack itemsPack, HeroAnimator animator)
+        public void Construct(ItemsPack itemsPack, MoveAnimator animator)
         {
             _itemsPack = itemsPack;
             _heroAnimator = animator;
@@ -24,7 +24,7 @@ namespace Hero
             {
                 GiveItem(shelf);
             }
-            else if (other.TryGetComponent(out CashRegister cashRegister))
+            else if (other.TryGetComponent(out CashDesk cashRegister))
             {
                 cashRegister.Buy();
             }

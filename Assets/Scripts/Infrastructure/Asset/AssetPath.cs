@@ -7,7 +7,10 @@ namespace Infrastructure.Asset
 
         public const string HeroConfigPath = "Configs/Hero";
         public const string CameraPath = "Infrastructure/Camera";
-        
+
         public const string GardenBedConfigPath = "Subjects/GardenBed";
+        public const string ShelfConfigPath = "Subjects/Shelf";
+        public const string CashDeskConfigPath = "Subjects/CashDesk";
+        public const string BuyerConfigPath = "Subjects/Buyer";
     }
 }

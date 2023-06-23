@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Hero
 {
-    public class HeroAnimator : MonoBehaviour
+    public class MoveAnimator : MonoBehaviour
     {
         private static readonly int MoveValue = Animator.StringToHash("Move");
         private static readonly int IsCarry = Animator.StringToHash("Carry");

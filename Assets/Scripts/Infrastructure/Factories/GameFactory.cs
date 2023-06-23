@@ -5,6 +5,7 @@ using Infrastructure.Services.Configs;
 using Infrastructure.Services.Input;
 using Logic;
 using Subject;
+using System;
 using UnityEngine;
 
 namespace Infrastructure.Factories
@@ -20,8 +21,10 @@ namespace Infrastructure.Factories
             SpawnerData heroData = GetSpawnerData(SpawnerMarker.Hero);
             GameObject hero = CreateHero(heroData.Position);
 
-            SpawnerData gardenBedData = GetSpawnerData(SpawnerMarker.GardenBed);
-            GameObject gardenBed = CreateGardenBed(gardenBedData.Position);
+            GameObject gardenBed = CreateGardenBed(GetSpawnerData(SpawnerMarker.GardenBed).Position);
+            GameObject shelf = CreateShelf(GetSpawnerData(SpawnerMarker.Shelf).Position);
+            GameObject cashDesk = CreateCashDesk(GetSpawnerData(SpawnerMarker.CashDesk).Position);
+            GameObject buyer = CreateBuyer(GetSpawnerData(SpawnerMarker.Buyer).Position, shelf, cashDesk);
 
         }
 
@@ -32,6 +35,34 @@ namespace Infrastructure.Factories
         {
             ProgressWriters.Clear();
             ProgressReaders.Clear();
+        }
+
+        private GameObject CreateBuyer(Vector3 at, GameObject shelf, GameObject cashDesk)
+        {
+            var config = Container.Single<IConfigService>().GetConfig<BuyerConfig>(AssetPath.BuyerConfigPath);
+            var subject = InstantiateRegistered(config.Buyer, at);
+            var buyer = subject.GetComponent<Buyer>();
+            MoveAnimator animator = buyer.GetComponent<MoveAnimator>();
+            buyer.Construct(
+                animator,
+                shelf.GetComponent<Shelf>().TargetBuyer.position,
+                cashDesk.GetComponent<CashDesk>().TargetBuyer.position,
+                GetSpawnerData(SpawnerMarker.Away).Position);
+            return subject;
+        }
+
+        private GameObject CreateCashDesk(Vector3 at)
+        {
+            var config = Container.Single<IConfigService>().GetConfig<CashDeskConfig>(AssetPath.CashDeskConfigPath);
+            var subject = InstantiateRegistered(config.CashDesk, at);
+            return subject;
+        }
+
+        private GameObject CreateShelf(Vector3 at)
+        {
+            var config = Container.Single<IConfigService>().GetConfig<ShelfConfig>(AssetPath.ShelfConfigPath);
+            var subject = InstantiateRegistered(config.Shelf, at);
+            return subject;
         }
         
         private GameObject CreateGardenBed(Vector3 at)
@@ -52,10 +83,9 @@ namespace Infrastructure.Factories
         private GameObject CreateHero(Vector3 at)
         {
             HeroConfig config = Container.Single<IConfigService>().GetConfig<HeroConfig>(AssetPath.HeroConfigPath);
-            // GameObject hero = InstantiateRegistered(AssetPath.HeroPath, at);
             var hero = InstantiateRegistered(config.HeroPrefab);
 
-            HeroAnimator animator = hero.GetComponent<HeroAnimator>();
+            MoveAnimator animator = hero.GetComponent<MoveAnimator>();
 
             HeroInterplay heroInterplay = hero.GetComponent<HeroInterplay>();
             ItemsPack pack = hero.GetComponentInChildren<ItemsPack>();

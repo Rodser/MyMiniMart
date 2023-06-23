@@ -1,7 +1,8 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class CashRegister : MonoBehaviour
+public class CashDesk : MonoBehaviour
 {
     [SerializeField] private Collider _cashierPoint;
     [SerializeField] private Collider _buyerPoint;
@@ -9,8 +10,11 @@ public class CashRegister : MonoBehaviour
     [SerializeField] private ItemsPack _scannedPack;
     [SerializeField] private ItemsPack _cashPack;
     [SerializeField] private int _timeBusy;
-        
+    [field: SerializeField] public Transform TargetBuyer { get; private set; }
+
     private bool _isBusy;
+    private int _currentBuyCount;
+    private Buyer _buyer;
 
     public void TakeVegetable(ItemsPack itemsPack)
     {
@@ -50,6 +54,18 @@ public class CashRegister : MonoBehaviour
 
         _scannedPack.Add(item);
         item.FlyTo(_scannedPack);
+        _currentBuyCount--;
+        if (_currentBuyCount == 0)
+            _buyer.Payment();
         Busy();
+    }
+
+    internal void VisitBuyer(Buyer buyer, int count)
+    {
+        if (_currentBuyCount > 0)
+            return;
+        
+        _currentBuyCount = count;
+        _buyer = buyer;
     }
 }

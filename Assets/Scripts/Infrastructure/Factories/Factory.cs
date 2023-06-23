@@ -40,7 +40,7 @@ namespace Infrastructure.Factories
             RegisterProgressWatcher(go);
             return go;
         }
-        
+
         protected GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
         {
             GameObject go = Object.Instantiate(prefab, at, Quaternion.identity);

@@ -1,3 +1,4 @@
+using Hero;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,65 +8,49 @@ internal class Buyer : MonoBehaviour
 {
     [SerializeField] private ItemsPack _itemsPack;
     
-    private static readonly int MoveValue = Animator.StringToHash("Move");
-    private static readonly int IsCarry = Animator.StringToHash("Carry");
-    private Vector3 _shelfPosition;
     private NavMeshAgent _agent;
+    private MoveAnimator _moveAnimator;
+    
     private PersonState _state;
-    private Animator _animator;
+
+    private Vector3 _shelfTarget;
+    private Vector3 _cashDeskTarget;
+    private Vector3 _awayTarget;
+    private bool _isCollect;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _animator = GetComponentInChildren<Animator>();
         _state = PersonState.Wait;
-        Debug.Log(_agent.acceleration); 
     }
 
     private void Update()
     {
-        MoveAnim(_agent.velocity.magnitude);
-    }
-
-    public void Construct()
-    {
-        SetCarryAnim(false);
-    }
-    
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.TryGetComponent(out CashRegister cashRegister))
+        _moveAnimator.Move(_agent.velocity.magnitude);
+        if (_isCollect)
         {
-            GiveVegetable(cashRegister);
-        }
-        else if(other.TryGetComponent(out Shelf shelf))
-        {
-            TakeVegetable(shelf);
+            ChangeState(PersonState.Buy, _cashDeskTarget);
         }
     }
 
-    private void GiveVegetable(CashRegister cashRegister)
+    public void Construct(MoveAnimator animator, Vector3 shelfTarget, Vector3 cashDeskTarget, Vector3 awayTarget)
     {
-        cashRegister.TakeVegetable(_itemsPack);
-        if(_itemsPack.Count == 0)
-            SetCarryAnim(false);
+        _moveAnimator = animator;
+        _shelfTarget = shelfTarget;
+        _cashDeskTarget = cashDeskTarget;
+        _awayTarget = awayTarget;
+        _moveAnimator.HasCargo(false);
+        ChangeState(PersonState.Picking, _shelfTarget);
     }
 
-    private void TakeVegetable(Shelf shelf)
+    internal void Payment()
     {
-        if (_itemsPack.IsFull)
-        {
-            return;
-        }
-        var item = shelf.GetVegetable();
-        if (item == null)
-            return;
-        item.FlyTo(_itemsPack);
-        _itemsPack.Add(item);
-        SetCarryAnim(true);
+        Debug.Log("Has bought");
+        _isCollect = false;
+        ChangeState(PersonState.Away, _awayTarget);
     }
 
-    private void ChangeState(PersonState personState, Vector3 targetPosition)
+    public void ChangeState(PersonState personState, Vector3 targetPosition)
     {
         switch (personState)
         {
@@ -78,24 +63,52 @@ internal class Buyer : MonoBehaviour
                 Move(targetPosition);
                 break;
             case PersonState.Away:
+                Move(targetPosition);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(personState), personState, null);
         }
     }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out CashDesk cashDesk))
+        {
+            cashDesk.VisitBuyer(this, _itemsPack.Count);
+            GiveVegetable(cashDesk);
+        }
+        else if(other.TryGetComponent(out Shelf shelf))
+        {
+            TakeVegetable(shelf);
+        }
+    }
+
+    private void GiveVegetable(CashDesk cashDesk)
+    {
+        cashDesk.TakeVegetable(_itemsPack);
+        if (_itemsPack.Count == 0)
+        {
+            _moveAnimator.HasCargo(false);
+        }
+    }
+
+    private void TakeVegetable(Shelf shelf)
+    {
+        if (_itemsPack.IsFull)
+        {
+            _isCollect = true;
+            return;
+        }
+        var item = shelf.GetVegetable();
+        if (item == null)
+            return;
+        item.FlyTo(_itemsPack);
+        _itemsPack.Add(item);
+        _moveAnimator.HasCargo(true);
+    }
 
     private void Move(Vector3 position)
     {
         _agent.destination = position;
-    }
-    
-    private  void MoveAnim(float strength)
-    {
-        _animator.SetFloat(MoveValue, strength);
-    }
-    
-    private void SetCarryAnim(bool value)
-    {
-        _animator.SetBool(IsCarry, value);
     }
 }

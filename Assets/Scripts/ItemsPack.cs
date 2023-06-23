@@ -51,7 +51,6 @@ public class ItemsPack : MonoBehaviour
     public void Add(Vegetable item)
     {
         item.CurrentIndex = Count;
-        Debug.Log(Count);
         _items.Add(item);
     }
 
@@ -83,7 +82,6 @@ public class ItemsPack : MonoBehaviour
         offset.z += z * ItemShift;
 
         Vector3 rotation = transform.rotation * (offset - position);
-        Debug.Log(rotation);
         offset = position + rotation;
         
         return offset;

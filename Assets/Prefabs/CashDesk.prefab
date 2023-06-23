@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1313088548292838471}
   - component: {fileID: 586437769597306909}
   - component: {fileID: 5416800330287609776}
+  - component: {fileID: 178089653090821919}
   m_Layer: 0
   m_Name: Cash
   m_TagString: Untagged
@@ -48,8 +49,6 @@ MonoBehaviour:
   _startItemPoint: {fileID: 1313088548292838471}
   _maxItems: 100
   _itemShift: 0.3
-  Color: {r: 0.08904416, g: 0.8207547, b: 0.10381164, a: 1}
-  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 20
@@ -67,6 +66,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.39, y: 1, z: 1.36}
   m_Center: {x: 0.3, y: 0.5, z: 0.39}
+--- !u!114 &178089653090821919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313688199074671473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SizeGizmo: 0.15
 --- !u!1 &2932174205058405850
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,9 +89,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3396125505600934769}
-  - component: {fileID: 3378927826177225301}
   - component: {fileID: 325261141208578670}
   - component: {fileID: 3719679238812078385}
+  - component: {fileID: 665125198681482363}
   m_Layer: 0
   m_Name: CashDesk
   m_TagString: Untagged
@@ -93,7 +106,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932174205058405850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.34709927, z: 0, w: 0.9378284}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,25 +119,7 @@ Transform:
   - {fileID: 7371088219952196719}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3378927826177225301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932174205058405850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8186624446be4f6384b0557f1a318d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cashierPoint: {fileID: 0}
-  _buyerPoint: {fileID: 0}
-  _itemsPack: {fileID: 6199493223797211599}
-  _scannedPack: {fileID: 1645736920382506435}
-  _cashPack: {fileID: 586437769597306909}
-  _timeBusy: 200
+  m_LocalEulerAnglesHint: {x: 0, y: -40.62, z: 0}
 --- !u!65 &325261141208578670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151,6 +146,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.96}
   m_Center: {x: 1.24, y: 0.5, z: 0}
+--- !u!114 &665125198681482363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932174205058405850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ed6ee4071ea994aa947374f6c2f07b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cashierPoint: {fileID: 3719679238812078385}
+  _buyerPoint: {fileID: 325261141208578670}
+  _itemsPack: {fileID: 6199493223797211599}
+  _scannedPack: {fileID: 1645736920382506435}
+  _cashPack: {fileID: 586437769597306909}
+  _timeBusy: 200
+  <TargetBuyer>k__BackingField: {fileID: 8507715150118139438}
 --- !u!1 &4548903856561887945
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7371088219952196719}
   - component: {fileID: 1645736920382506435}
+  - component: {fileID: 7412468323906186006}
   m_Layer: 0
   m_Name: Product (1)
   m_TagString: Untagged
@@ -198,12 +213,24 @@ MonoBehaviour:
   _startItemPoint: {fileID: 7371088219952196719}
   _maxItems: 30
   _itemShift: 0.3
-  Color: {r: 0.8490566, g: 0.3414959, b: 0.1481844, a: 1}
-  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 5
   _itemCountZ: 3
+--- !u!114 &7412468323906186006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548903856561887945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SizeGizmo: 0.15
 --- !u!1 &6468369758722537212
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2979603512087395157}
   - component: {fileID: 6199493223797211599}
+  - component: {fileID: 779058490311673573}
   m_Layer: 0
   m_Name: Product
   m_TagString: Untagged
@@ -282,12 +310,24 @@ MonoBehaviour:
   _startItemPoint: {fileID: 2979603512087395157}
   _maxItems: 30
   _itemShift: 0.3
-  Color: {r: 0.83997625, g: 0.8773585, b: 0.10346207, a: 1}
-  SizeGizmo: 0.15
   _inBox: 1
   _itemCountX: 4
   _itemCountY: 5
   _itemCountZ: 3
+--- !u!114 &779058490311673573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393604526355605921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e36c7d55a84bfc9eaef5db2595e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SizeGizmo: 0.15
 --- !u!1 &8341032761436462759
 GameObject:
   m_ObjectHideFlags: 0
